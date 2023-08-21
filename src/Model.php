@@ -163,7 +163,7 @@ abstract class Model implements UrlRoutable, Arrayable, JsonSerializable, ModelI
             ->getQuery()
             ->setOptions($this->options)
             ->addOption('fields', $this->select)
-            // ->addOption('context', ['lang' => request()->lang])
+            ->addOption('context', ['lang' => request()->lang])
             ->getResult();
 
         $this->clearUseVars();
@@ -184,7 +184,7 @@ abstract class Model implements UrlRoutable, Arrayable, JsonSerializable, ModelI
             ->getQuery()
             ->setOptions($this->options)
             ->addOption('fields', $this->select)
-            // ->addOption('context', ['lang' => request()->lang])
+            ->addOption('context', ['lang' => request()->lang])
             ->getOneOrNullResult();
 
         $this->clearUseVars();
