@@ -26,9 +26,9 @@
         "php": ">=7.2",
         "ext-json": "*",
         "ang3/php-xmlrpc-client": "^1.0.2",
-        "psr/log": "^1.1",
+        "psr/log": "^1.1|^2.0|^3.0",
         "phpxmlrpc/polyfill-xmlrpc": "1.0-rc1",
-        "laravel/framework": "^9.19"
+        "laravel/framework": "^9.19|^10.0|^11.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
