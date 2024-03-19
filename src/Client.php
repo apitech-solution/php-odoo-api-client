@@ -87,14 +87,14 @@ class Client
      */
     private $uid;
 
-    public function __construct(string $url, string $database, string $username, string $password, LoggerInterface $logger = null)
+    public function __construct(string $url, string $database, string $username, string $password)
     {
         $this->url = $url;
         $this->database = $database;
         $this->username = $username;
         $this->password = $password;
         $this->recordManager = new RecordManager($this);
-        $this->logger = $logger;
+        $this->logger = new Logger();
         $this->initEndpoints();
     }
 
@@ -340,7 +340,7 @@ class Client
         ];
 
         if ($this->logger) {
-            $this->logger->debug('Calling method {name}::{method}', $loggerContext);
+            $this->logger->info('Calling method {name}::{method}', $loggerContext);
         }
 
         $result = $this->objectEndpoint->call('execute_kw', [
@@ -374,6 +374,13 @@ class Client
     public function authenticate(): int
     {
         if (null === $this->uid) {
+            if ($this->logger) {
+                $this->logger->info('Authenticating user {username} on database {database}', [
+                    'username' => $this->username,
+                    'database' => $this->database,
+                ]);
+            }
+
             $this->uid = $this->commonEndpoint->call('authenticate', [
                 $this->database,
                 $this->username,
@@ -382,7 +389,21 @@ class Client
             ]);
 
             if (!$this->uid || !is_int($this->uid)) {
+                if ($this->logger) {
+                    $this->logger->error('Authentication failed for user {username} on database {database}', [
+                        'username' => $this->username,
+                        'database' => $this->database,
+                    ]);
+                }
                 throw new AuthenticationException();
+            }
+
+            if ($this->logger) {
+                $this->logger->debug('User {username} authenticated on database {database} with UID {uid}', [
+                    'username' => $this->username,
+                    'database' => $this->database,
+                    'uid' => $this->uid,
+                ]);
             }
         }
 
@@ -478,7 +499,7 @@ class Client
      */
     private function initEndpoints(): void
     {
-        $this->commonEndpoint = new Endpoint($this->url.'/'.self::ENDPOINT_COMMON);
-        $this->objectEndpoint = new Endpoint($this->url.'/'.self::ENDPOINT_OBJECT);
+        $this->commonEndpoint = new Endpoint($this->url . '/' . self::ENDPOINT_COMMON);
+        $this->objectEndpoint = new Endpoint($this->url . '/' . self::ENDPOINT_OBJECT);
     }
 }
