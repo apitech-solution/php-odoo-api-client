@@ -3,3 +3,6 @@
 .php_cs.cache
 .phpunit.result.cache
 test.php
+Dockerfile
+docker-compose.yml
+.env
