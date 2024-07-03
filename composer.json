@@ -27,7 +27,7 @@
         "ext-json": "*",
         "ang3/php-xmlrpc-client": "^1.0.2",
         "psr/log": "^1.1|^2.0|^3.0",
-        "phpxmlrpc/polyfill-xmlrpc": "1.0.0-rc1",
+        "phpxmlrpc/polyfill-xmlrpc": "1.0.0",
         "laravel/framework": "^9.19|^10.0|^11.0"
     },
     "require-dev": {

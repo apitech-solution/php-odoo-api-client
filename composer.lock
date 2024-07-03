@@ -2068,7 +2068,7 @@
         },
         {
             "name": "phpxmlrpc/polyfill-xmlrpc",
-            "version": "1.0.0-rc1",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gggeek/polyfill-xmlrpc.git",
@@ -2120,7 +2120,7 @@
             ],
             "support": {
                 "issues": "https://github.com/gggeek/polyfill-xmlrpc/issues",
-                "source": "https://github.com/gggeek/polyfill-xmlrpc/tree/1.0.0-rc1"
+                "source": "https://github.com/gggeek/polyfill-xmlrpc/tree/1.0.0"
             },
             "time": "2022-01-30T15:28:08+00:00"
         },
