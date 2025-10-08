@@ -315,7 +315,7 @@ class ObjectTester extends TestDecorator
     /**
      * @return string[]
      */
-    public function getSingularNames(string $name, string $prefix = null): array
+    public function getSingularNames(string $name, ?string $prefix = null): array
     {
         $names = (array) Inflector::singularize($name);
 

@@ -239,7 +239,7 @@ class ExpressionBuilder
      * @throws InvalidArgumentException when $criteria value is not valid
      * @throws ConversionException      on data conversion failure
      */
-    public function normalizeDomains(iterable $criteria = null): array
+    public function normalizeDomains(?iterable $criteria = null): array
     {
         if (!$criteria) {
             return [[]];

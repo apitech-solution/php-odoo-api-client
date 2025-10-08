@@ -106,7 +106,7 @@ class Client
      *
      * @throws MissingConfigParameterException when a required parameter is missing
      */
-    public static function createFromConfig(array $config, LoggerInterface $logger = null): self
+    public static function createFromConfig(array $config, ?LoggerInterface $logger = null): self
     {
         $getParam = static function ($config, $paramName, $paramKey) {
             $value = $config[$paramName] ?? $config[$paramKey] ?? null;
@@ -192,7 +192,7 @@ class Client
      * @throws InvalidArgumentException when $criteria value is not valid
      * @throws RequestException         when request failed
      */
-    public function searchOne(string $modelName, iterable $criteria = null, array $options = []): ?int
+    public function searchOne(string $modelName, ?iterable $criteria = null, array $options = []): ?int
     {
         $options['limit'] = 1;
         $result = $this->search($modelName, $criteria, $options);
@@ -223,7 +223,7 @@ class Client
      *
      * @return array<int>
      */
-    public function search(string $modelName, iterable $criteria = null, array $options = []): array
+    public function search(string $modelName, ?iterable $criteria = null, array $options = []): array
     {
         if (array_key_exists('fields', $options)) {
             unset($options['fields']);
@@ -250,7 +250,7 @@ class Client
      * @throws InvalidArgumentException when $criteria value is not valid
      * @throws RequestException         when request failed
      */
-    public function findOneBy(string $modelName, iterable $criteria = null, array $options = []): ?array
+    public function findOneBy(string $modelName, ?iterable $criteria = null, array $options = []): ?array
     {
         $result = $this->findBy($modelName, $criteria, $options);
 
@@ -277,7 +277,7 @@ class Client
      *
      * @return array<int, array>
      */
-    public function findBy(string $modelName, iterable $criteria = null, array $options = []): array
+    public function findBy(string $modelName, ?iterable $criteria = null, array $options = []): array
     {
         return (array) $this->call($modelName, OrmQuery::SEARCH_READ, $this->expr()->normalizeDomains($criteria), $options);
     }
@@ -311,7 +311,7 @@ class Client
      * @throws InvalidArgumentException when $criteria value is not valid
      * @throws RequestException         when request failed
      */
-    public function count(string $modelName, iterable $criteria = null): int
+    public function count(string $modelName, ?iterable $criteria = null): int
     {
         return (int) $this->call($modelName, OrmQuery::SEARCH_COUNT, $this->expr()->normalizeDomains($criteria));
     }

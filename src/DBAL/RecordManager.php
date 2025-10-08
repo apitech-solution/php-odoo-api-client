@@ -95,7 +95,7 @@ class RecordManager
      *
      * @return int[]
      */
-    public function searchAll(string $modelName, array $orders = [], int $limit = null, int $offset = null): array
+    public function searchAll(string $modelName, array $orders = [], ?int $limit = null, ?int $offset = null): array
     {
         return $this
             ->getRepository($modelName)
@@ -107,7 +107,7 @@ class RecordManager
      *
      * @return int[]
      */
-    public function search(string $modelName, ?DomainInterface $criteria = null, array $orders = [], int $limit = null, int $offset = null): array
+    public function search(string $modelName, ?DomainInterface $criteria = null, array $orders = [], ?int $limit = null, ?int $offset = null): array
     {
         return $this
             ->getRepository($modelName)
@@ -139,7 +139,7 @@ class RecordManager
     /**
      * Find ONE record by criteria.
      */
-    public function findOneBy(string $modelName, ?DomainInterface $criteria = null, array $fields = [], array $orders = [], int $offset = null): ?array
+    public function findOneBy(string $modelName, ?DomainInterface $criteria = null, array $fields = [], array $orders = [], ?int $offset = null): ?array
     {
         return $this
             ->getRepository($modelName)
@@ -151,7 +151,7 @@ class RecordManager
      *
      * @return array[]
      */
-    public function findAll(string $modelName, array $fields = [], array $orders = [], int $limit = null, int $offset = null): array
+    public function findAll(string $modelName, array $fields = [], array $orders = [], ?int $limit = null, ?int $offset = null): array
     {
         return $this
             ->getRepository($modelName)
@@ -163,7 +163,7 @@ class RecordManager
      *
      * @return array[]
      */
-    public function findBy(string $modelName, ?DomainInterface $criteria = null, array $fields = [], array $orders = [], int $limit = null, int $offset = null): array
+    public function findBy(string $modelName, ?DomainInterface $criteria = null, array $fields = [], array $orders = [], ?int $limit = null, ?int $offset = null): array
     {
         return $this
             ->getRepository($modelName)
@@ -231,7 +231,7 @@ class RecordManager
         return $this;
     }
 
-    public function createQueryBuilder(string $modelName = null): QueryBuilder
+    public function createQueryBuilder(?string $modelName = null): QueryBuilder
     {
         return new QueryBuilder($this, $modelName);
     }

@@ -71,7 +71,7 @@ class QueryBuilder
      */
     private $firstResult;
 
-    public function __construct(RecordManager $recordManager, string $modelName = null)
+    public function __construct(RecordManager $recordManager, ?string $modelName = null)
     {
         $this->recordManager = $recordManager;
         $this->from($modelName);

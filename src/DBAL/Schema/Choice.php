@@ -19,7 +19,7 @@ class Choice
      */
     private $value;
 
-    public function __construct(string $name, string $value, int $id = null)
+    public function __construct(string $name, string $value, ?int $id = null)
     {
         $this->name = $name;
         $this->value = $value;

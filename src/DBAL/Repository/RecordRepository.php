@@ -106,7 +106,7 @@ class RecordRepository
      *
      * @return int[]
      */
-    public function searchAll(array $orders = [], int $limit = null, int $offset = null): array
+    public function searchAll(array $orders = [], ?int $limit = null, ?int $offset = null): array
     {
         return $this->search(null, $orders, $limit, $offset);
     }
@@ -116,7 +116,7 @@ class RecordRepository
      *
      * @return int[]
      */
-    public function search(?DomainInterface $criteria = null, array $orders = [], int $limit = null, int $offset = null): array
+    public function search(?DomainInterface $criteria = null, array $orders = [], ?int $limit = null, ?int $offset = null): array
     {
         /** @var int[] $result */
         $result = $this
@@ -159,7 +159,7 @@ class RecordRepository
     /**
      * Find ONE record by criteria.
      */
-    public function findOneBy(?DomainInterface $criteria = null, array $fields = [], array $orders = [], int $offset = null): ?array
+    public function findOneBy(?DomainInterface $criteria = null, array $fields = [], array $orders = [], ?int $offset = null): ?array
     {
         $result = $this->findBy($criteria, $fields, $orders, 1, $offset);
 
@@ -171,7 +171,7 @@ class RecordRepository
      *
      * @return array[]
      */
-    public function findAll(array $fields = [], array $orders = [], int $limit = null, int $offset = null): array
+    public function findAll(array $fields = [], array $orders = [], ?int $limit = null, ?int $offset = null): array
     {
         return $this->findBy(null, $fields, $orders, $limit, $offset);
     }
@@ -181,7 +181,7 @@ class RecordRepository
      *
      * @return array[]
      */
-    public function findBy(?DomainInterface $criteria = null, array $fields = [], array $orders = [], int $limit = null, int $offset = null): array
+    public function findBy(?DomainInterface $criteria = null, array $fields = [], array $orders = [], ?int $limit = null, ?int $offset = null): array
     {
         return $this
             ->createQueryBuilder()
